@@ -1,0 +1,4 @@
+samtools=1.9
+bwa=0.7.17
+pilon=1.23
+psutil=5.7.0
