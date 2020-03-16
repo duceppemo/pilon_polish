@@ -35,7 +35,7 @@ class PilonPolish(object):
         # Get fasta and fastq file(s) info
         PilonPolish.get_fasta(self.input_fasta_folder, PilonPolish.fasta_ext, self.sample_dict)
         PilonPolish.get_fastq(self.input_fastq_folder, PilonPolish.fastq_ext, self.sample_dict)
-        self.pilon_polish(self.sample_dict, self.cpu, self.mem, self.output_folder)
+        self.pilon_polish(self.sample_dict, self.cpu, self.mem, self.output_folder)  # TODO -> make parallel
 
     @staticmethod
     def get_fasta(folder, ext_list, sample_dict):
@@ -183,7 +183,7 @@ if __name__ == "__main__":
                         help='Folder that contains the genome assemblies to polish')
     parser.add_argument('-f', '--fastq', metavar='/input_fastq/',
                         required=True,
-                        help='Folder that contains the matching fastq files. File names before first "_" must be'
+                        help='Folder that contains the matching fastq files. File names before first "_" must be '
                              'unique and matching assembly names (also before first "_"')
     parser.add_argument('-o', '--output', metavar='/output_folder/',
                         required=True,
@@ -195,7 +195,7 @@ if __name__ == "__main__":
     parser.add_argument('-m', '--memory', metavar=str(max_mem),
                         required=False,
                         type=int, default=max_mem,
-                        help='Memory to use for Pilon (Java). Default is 85%% available memory({}GB)'.format(max_cpu))
+                        help='Memory to use for Pilon (Java). Default is 85%% available memory ({}GB)'.format(max_mem))
 
     # Get the arguments into an object
     arguments = parser.parse_args()
